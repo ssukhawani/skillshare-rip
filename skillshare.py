@@ -1,6 +1,11 @@
-import requests, json, sys, re, os
+import requests
+import json
+import sys
+import re
+import os
 import cloudscraper
 from slugify import slugify
+
 
 class Skillshare(object):
     def __init__(
@@ -103,11 +108,11 @@ class Skillshare(object):
         res = scraper.get(
             url,
             headers={
-            'Accept': 'application/vnd.skillshare.class+json;,version=0.8',
-            'User-Agent': 'Skillshare/5.3.0; Android 9.0.1',
-            'Host': 'api.skillshare.com',
-            'Referer': 'https://www.skillshare.com/',
-            'cookie': self.cookie,
+                'Accept': 'application/vnd.skillshare.class+json;,version=0.8',
+                'User-Agent': 'Skillshare/5.3.0; Android 9.0.1',
+                'Host': 'api.skillshare.com',
+                'Referer': 'https://www.skillshare.com/',
+                'cookie': self.cookie,
             }
         )
 
@@ -172,32 +177,30 @@ class Skillshare(object):
                     dl += len(data)
                     f.write(data)
                     done = int(50 * dl / total_length)
-                    sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50 - done)))
+                    sys.stdout.write("\r[%s%s]" %
+                                     ('=' * done, ' ' * (50 - done)))
                     sys.stdout.flush()
 
             print('')
 
+
 def splash():
 
     print(r"""   
-                 ____  _    _ _ _     _                          ____  _     
-                / ___|| | _(_) | |___| |__   __ _ _ __ ___      |  _ \| |    
-                \___ \| |/ / | | / __| '_ \ / _` | '__/ _ \_____| | | | |    
-                 ___) |   <| | | \__ \ | | | (_| | | |  __/_____| |_| | |___ 
-                |____/|_|\_\_|_|_|___/_| |_|\__,_|_|  \___|     |____/|_____|  
-                             _ __ ___  _ _  _ _ _  ___  _ _ 
-                            | / /| __>| \ || | | || . || | |
-                            |  \ | _> |   || | | ||   |\   /
-                            |_\_\|___>|_\_||__/_/ |_|_| |_| 
-                    
+  ____    _      _   _   _         _                                            _         
+ / ___|  | | __ (_) | | | |  ___  | |__     __ _   _ __    ___           _ __  (_)  _ __  
+ \___ \  | |/ / | | | | | | / __| | '_ \   / _` | | '__|  / _ \  _____  | '__| | | | '_ \ 
+  ___) | |   <  | | | | | | \__ \ | | | | | (_| | | |    |  __/ |_____| | |    | | | |_) |
+ |____/  |_|\_\ |_| |_| |_| |___/ |_| |_|  \__,_| |_|     \___|         |_|    |_| | .__/ 
+                                                                                   |_|    
                     
                         
-                     ####### #     # ####### #     #    #     #####  #    # 
-                     #     # ##    # #       #     #   # #   #     # #   #  
-                     #     # # #   # #       #     #  #   #  #       #  #   
-                     #     # #  #  # #####   ####### #     # #       ###    
-                     #     # #   # # #       #     # ####### #       #  #   
-                     #     # #    ## #       #     # #     # #     # #   #  
-                     ####### #     # ####### #     # #     #  #####  #    # 
+                             #     #    #     #####  #    # 
+                             #     #   # #   #     # #   #  
+                             #     #  #   #  #       #  #   
+                             ####### #     # #       ###    
+                             #     # ####### #       #  #   
+                             #     # #     # #     # #   #  
+                             #     # #     #  #####  #    # 
                                                                                                          
                 """)
